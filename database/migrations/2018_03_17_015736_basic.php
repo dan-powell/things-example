@@ -13,7 +13,7 @@ class Basic extends Migration
      */
     public function up()
     {
-        Schema::create('shelfs', function (Blueprint $table) {
+        Schema::create('shelves', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
 
@@ -24,7 +24,7 @@ class Basic extends Migration
             $table->increments('id');
             $table->integer('shelf_id')->unsigned()->nullable();
             $table->string('name');
-            $table->foreign('shelf_id')->references('id')->on('shelfs')->onDelete('cascade');
+            $table->foreign('shelf_id')->references('id')->on('shelves')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -38,6 +38,6 @@ class Basic extends Migration
     public function down()
     {
         Schema::dropIfExists('books');
-        Schema::dropIfExists('shelfs');
+        Schema::dropIfExists('shelves');
     }
 }
